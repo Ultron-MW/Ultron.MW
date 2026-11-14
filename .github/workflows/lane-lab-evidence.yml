@@ -264,7 +264,7 @@ jobs:
       github.event_name == 'workflow_dispatch' && inputs.lab_task == 'held-out-acceptance' && inputs.baseline_sha != '' && inputs.candidate_sha != ''
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - name: Configure Git bare-repository policy

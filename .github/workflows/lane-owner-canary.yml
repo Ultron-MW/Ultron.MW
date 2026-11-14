@@ -72,7 +72,7 @@ jobs:
     concurrency:
       group: owner-actions-canary-${{ github.run_id }}-read-only
       cancel-in-progress: false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 3
     permissions:
       contents: read
@@ -114,7 +114,7 @@ jobs:
     concurrency:
       group: owner-actions-canary-${{ github.run_id }}-one-branch
       cancel-in-progress: false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 3
     permissions:
       contents: write
@@ -157,7 +157,7 @@ jobs:
     concurrency:
       group: owner-canary-matrix-${{ github.run_id }}-inspect-or-verify
       cancel-in-progress: false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 4
     permissions:
       contents: read
@@ -202,7 +202,7 @@ jobs:
     concurrency:
       group: owner-canary-matrix-${{ github.run_id }}-marker-write
       cancel-in-progress: false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 4
     permissions:
       contents: write
@@ -245,7 +245,7 @@ jobs:
     concurrency:
       group: mah-connection1026-${{ github.run_id }}-verify
       cancel-in-progress: false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - name: Configure Git bare-repository policy

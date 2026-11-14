@@ -24,7 +24,7 @@ jobs:
         github.event.comment.user.id == 308995719 &&
         (startsWith(github.event.comment.body, '/council override ') ||
          startsWith(github.event.comment.body, '/council recheck'))))
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 12
     concurrency:
       group: trusted-council-${{ github.event.pull_request.number || github.event.issue.number }}

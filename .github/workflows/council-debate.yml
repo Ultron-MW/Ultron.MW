@@ -62,7 +62,7 @@ jobs:
           contains(github.event.comment.body, '/council'))
       )
       )
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     permissions:
       contents: read
@@ -356,7 +356,7 @@ jobs:
     concurrency:
       group: council-identity-proof-${{ inputs.role }}-prove
       cancel-in-progress: false
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
       - name: Configure Git bare-repository policy
@@ -410,7 +410,7 @@ jobs:
       )
     permissions:
       contents: read
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 3
     steps:
       - name: Configure Git bare-repository policy
