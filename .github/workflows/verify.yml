@@ -110,7 +110,7 @@ jobs:
         with:
           subject-path: artifacts/github-verification-receipt.json
       - name: Retain receipt and Sigstore bundle
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: attested-verification-${{ env.SOURCE_SHA }}-${{ github.run_attempt }}
           path: |
@@ -149,7 +149,7 @@ jobs:
           node scripts/compare-acceptance-evidence.mjs "$BASE_SHA" "$CANDIDATE_SHA" artifacts/fixed-comparison.json
       - name: Preserve case-level task and event readbacks
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: fixed-comparison-${{ github.event.pull_request.head.sha }}-${{ github.run_attempt }}
           path: artifacts/fixed-comparison.json

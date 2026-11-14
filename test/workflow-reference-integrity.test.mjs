@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,rmSync} from 'node:fs';
+import {mkdtempSync,mkdirSync,writeFileSync,readFileSync,readdirSync,rmSync} from 'node:fs';
 import {tmpdir} from 'node:os';
 import {join} from 'node:path';
 import {auditWorkflowReferences} from '../scripts/check-workflow-references.mjs';
@@ -24,6 +24,18 @@ test('current consolidated workflow names, reusable callees and executable paths
   assert.ok(result.referencesChecked>=50);
 });
 test('Core Verify runs static reference preflight before installing dependencies',()=>{const workflow=readFileSync(new URL('../.github/workflows/verify.yml',import.meta.url),'utf8');const check=workflow.indexOf('node scripts/check-workflow-references.mjs');const install=workflow.indexOf('npm ci --ignore-scripts');assert.ok(check>0&&check<install,'reference preflight must precede dependency installation');});
+test('consolidated workflows use SHA-pinned Node 24 actions rather than retired Node 20 pins',()=>{
+  const workflowDirectory=new URL('../.github/workflows/',import.meta.url);
+  const obsolete=[
+    'ea165f8d65b6e75b540449e92b4886f43607fa02',
+    'd3f86a106a0bac45b974a628896c90dbdf5c8093',
+    '60a0d83039c74a4aee543508d2ffcb1c3799cdea',
+  ];
+  for(const file of readdirSync(workflowDirectory).filter(n=>n.endsWith('.yml')||n.endsWith('.yaml'))){
+    const source=readFileSync(new URL(file,workflowDirectory),'utf8');
+    for(const pin of obsolete)assert.ok(!source.includes(pin),file+' uses retired Node 20 pin '+pin);
+  }
+});
 test('missing script or deleted reusable workflow fails with exact path',()=>withRepo({
   '.github/workflows/root.yml':`name: Example
 on:

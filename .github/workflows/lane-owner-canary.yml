@@ -92,7 +92,7 @@ jobs:
         run: node scripts/owner-actions-canary.mjs
       - name: Persist sanitized read-only evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: owner-actions-read-${{ github.run_id }}
           path: artifacts/owner-actions-canary-*.json
@@ -136,7 +136,7 @@ jobs:
         run: node scripts/owner-actions-canary.mjs
       - name: Persist sanitized write or uncertain-state evidence
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: owner-actions-create-${{ github.run_id }}
           path: artifacts/owner-actions-canary-*.json
@@ -180,7 +180,7 @@ jobs:
         run: node scripts/owner-canary-matrix.mjs
       - name: Upload sanitized independent readback receipt
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: owner-canary-read-${{ github.run_id }}
           path: artifacts/owner-canary-matrix-*.json
@@ -227,7 +227,7 @@ jobs:
         run: node scripts/owner-canary-matrix.mjs
       - name: Upload sanitized marker or uncertain-state receipt
         if: always()
-        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
         with:
           name: owner-canary-marker-${{ github.run_id }}
           path: artifacts/owner-canary-matrix-*.json
